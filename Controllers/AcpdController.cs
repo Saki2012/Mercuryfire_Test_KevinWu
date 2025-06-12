@@ -121,5 +121,18 @@ namespace Mercuryfire_Test_KevinWu.Controllers
 
             return Ok(new { deleted = rowsAffected > 0 });
         }
+
+        private async void ExecSQL(string json)
+        {
+            using var conn = new SqlConnection(ConnStr);
+            using var cmd = new SqlCommand("usp_Delete_ACPD", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            cmd.Parameters.AddWithValue("@json", json);
+
+            await conn.OpenAsync();
+        }
     }
 }
