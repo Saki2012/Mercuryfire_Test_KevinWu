@@ -121,7 +121,10 @@ namespace Mercuryfire_Test_KevinWu.Controllers
 
             return Ok(new { deleted = rowsAffected > 0 });
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="json"></param>
         private async void ExecSQL(string json)
         {
             using var conn = new SqlConnection(ConnStr);
